@@ -17,49 +17,51 @@
 $(call inherit-product, device/xiaomi/tissot/full_tissot.mk)
 
 # Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/xenonhd/config/common_full_phone.mk)
 
 # A/B updater
-AB_OTA_UPDATER := true
+AB_OTA_UPDATER := false
 
-AB_OTA_PARTITIONS += \
-    boot \
-    system
+#AB_OTA_PARTITIONS += \
+#    boot \
+#    system
 
-AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=ext4 \
-    POSTINSTALL_OPTIONAL_system=true
+#AB_OTA_POSTINSTALL_CONFIG += \
+#    RUN_POSTINSTALL_system=true \
+#    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
+#    FILESYSTEM_TYPE_system=ext4 \
+#    POSTINSTALL_OPTIONAL_system=true
 
-PRODUCT_PACKAGES += \
-    otapreopt_script \
-    update_engine \
-    update_engine_sideload \
-    update_verifier
+#PRODUCT_PACKAGES += \
+#    otapreopt_script \
+#    update_engine \
+#    update_engine_sideload \
+#    update_verifier
 
 # The following modules are included in debuggable builds only.
-PRODUCT_PACKAGES_DEBUG += \
-    bootctl \
-    update_engine_client
+#PRODUCT_PACKAGES_DEBUG += \
+#    bootctl \
+#    update_engine_client
 
-# Boot control HAL
-PRODUCT_PACKAGES += \
-    bootctrl.qcom
+## Boot control HAL
+#PRODUCT_PACKAGES += \
+#    bootctrl.qcom
 
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.qcom \
-    libgptutils \
-    libz
+#PRODUCT_STATIC_BOOT_CONTROL_HAL := \
+#    bootctrl.qcom \
+#    libgptutils \
+#    libz
 
-PRODUCT_NAME := lineage_tissot
+PRODUCT_NAME := xenonhd_tissot
 BOARD_VENDOR := Xiaomi
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.xenonhd.maintainer=maxprzemo
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT="xiaomi/tissot/tissot_sprout:8.0.0/OPR1.170623.026/8.1.10:user/release-keys" \
     PRIVATE_BUILD_DESC="tissot-user 8.0.0 OPR1.170623.026 8.1.10 release-keys"
 
-# Unofficial build ID
-TARGET_UNOFFICIAL_BUILD_ID := TEAMOREO
+
